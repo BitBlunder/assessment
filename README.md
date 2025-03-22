@@ -24,8 +24,8 @@ marine-navigation-system/
 │   │   ├── Renderer.cpp
 │   │   └── Application.cpp
 │   └── Public/
-│ 		├── Renderer.hpp
-│       └── Application.hpp
+│  	├── Renderer.hpp
+│ 	└── Application.hpp
 ├── Vendors/
 ├── Lib/
 └── README.md
