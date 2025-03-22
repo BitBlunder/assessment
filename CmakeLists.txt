@@ -1,0 +1,49 @@
+cmake_minimum_required(VERSION 3.30)
+
+project(marine-navigation-system)
+
+set(SOURCE_FILES
+	${CMAKE_SOURCE_DIR}/Source/main.cpp
+	${CMAKE_SOURCE_DIR}/Source/Private/Renderer.cpp
+	${CMAKE_SOURCE_DIR}/Source/Private/Application.cpp
+)
+
+set(COMPILE_DEFS
+	GLEW_STATIC
+)
+
+set(LINK_DIRS
+	${CMAKE_SOURCE_DIR}/Lib
+)
+set(INCLUDE_DIRS
+	${CMAKE_SOURCE_DIR}/Vendors
+	${CMAKE_SOURCE_DIR}/Source/Public
+)
+
+add_executable(${PROJECT_NAME} WIN32 ${SOURCE_FILES})
+
+add_compile_definitions(${COMPILE_DEFS})
+
+link_directories(${PROJECT_NAME} PRIVATE ${LINK_DIRS})
+include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
+
+file(GLOB STATIC_LIBS "${CMAKE_SOURCE_DIR}/Lib/*.lib")
+target_link_libraries(${PROJECT_NAME} PRIVATE
+	${STATIC_LIBS}
+
+	comctl32.lib
+	rpcrt4.lib
+	ws2_32.lib
+	winmm.lib
+	shlwapi.lib
+	version.lib
+	kernel32.lib
+	user32.lib
+	gdi32.lib
+	comdlg32.lib
+	ole32.lib
+	oleaut32.lib
+	uuid.lib
+	advapi32.lib
+	OpenGL32.lib
+)
